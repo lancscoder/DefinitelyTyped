@@ -22,9 +22,11 @@ export interface VirtualizedOptionRenderOptions<T> {
     valueArray: T[];
 }
 
+type optionHeightFunction<TValue = OptionValues> = (option: TValue) => number;
+
 export interface AdditionalVirtualizedSelectProps<TValue> {
     maxHeight?: number;
-    optionHeight?: number | function;
+    optionHeight?: number | optionHeightFunction<TValue>;
     optionRenderer?(options: VirtualizedOptionRenderOptions<TValue>): JSX.Element;
     selectComponent?: React.ComponentClass<any> | React.StatelessComponent<any>;
 }
